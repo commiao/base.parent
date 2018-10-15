@@ -16,5 +16,9 @@
         <module>base.arch.tools.parent</module>
     </modules>
 
+    <dependencies>
+
+
+    </dependencies>
 
 </project>

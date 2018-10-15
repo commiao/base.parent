@@ -1,0 +1,8 @@
+1、工具类
+	GeneratorProperties:用于装载generator.properties,generator.xml文件
+
+
+
+2、主类：
+	GeneratorFacade：是生成器Generator的门面类
+	Generator：生成器引擎
