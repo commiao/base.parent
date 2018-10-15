@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:amq="http://activemq.apache.org/schema/core"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-4.0.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+           http://www.springframework.org/schema/mvc
+           http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+           http://www.springframework.org/schema/tx 
+           http://www.springframework.org/schema/tx/spring-tx-4.0.xsd 
+           http://www.springframework.org/schema/task
+		   http://www.springframework.org/schema/task/spring-task.xsd">
+
+	<!--切面配置，建议是将切面加在最上层 -->
+	<!-- aop config -->
+	<aop:config>
+		<aop:pointcut id="redisCacheAdvicePoint" expression="execution(* basic.arch.component.cache.service..*.*(..)) and @annotation(enableCache)"  />
+		<aop:aspect ref="redisCacheAspect" order="1">
+			<aop:around pointcut-ref="redisCacheAdvicePoint" method="doAroundMethod"/> 
+		</aop:aspect>
+	</aop:config>
+	
+	<bean id="redisCacheAspect" class="basic.arch.component.cache.aop.CacheAspect" >
+		<property name="cacheHandleChain" ref="cacheHandleChain"></property>
+	</bean>
+	
+	<!--枚举类型要想注入到类中，一定要先使用org.springframework.beans.factory.config.FieldRetrievingFactoryBean类将枚举类型进行转换  -->
+	<bean id="redisType" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">    
+        <property name="staticField" value="basic.arch.component.cache.annotation.CacheType.REDIS" />    
+    </bean>  
+	
+	
+	<!-- 缓存处理链 -->
+	<bean id="cacheHandleChain" class="basic.arch.component.cache.aop.handle.CacheHandleChain">
+		<property name="cacheHandlerMap">
+			<map>
+				<entry key-ref="redisType" value-ref="redisCacheHandle"></entry>
+			</map>
+		</property>
+	</bean>
+	
+</beans>

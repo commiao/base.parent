@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	
+	<!--  redis 哨兵-->
+	<bean id="redisSentinelConfiguration" class="org.springframework.data.redis.connection.RedisSentinelConfiguration">
+		<property name="master">
+			<bean class="org.springframework.data.redis.connection.RedisNode">
+				<property name="name" value="mymaster"></property>
+			</bean>
+		</property>
+		<property name="sentinels">
+			<set>
+				<bean class="org.springframework.data.redis.connection.RedisNode">
+					<constructor-arg name="host" value="${redis.master.host}" />
+					<constructor-arg name="port" value="${redis.master.port}" />
+				</bean>
+				<bean class="org.springframework.data.redis.connection.RedisNode">
+					<constructor-arg name="host" value="${redis.slave1.host}" />
+					<constructor-arg name="port" value="${redis.slave1.port}" />
+				</bean>
+				<bean class="org.springframework.data.redis.connection.RedisNode">
+					<constructor-arg name="host" value="${redis.slave2.host}" />
+					<constructor-arg name="port" value="${redis.slave2.port}" />
+				</bean>
+			</set>
+		</property>
+	</bean>
+
+
+
+	<!-- redis连接池 -->
+	<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxTotal" value="${redis.pool.maxTotal}" />
+		<property name="maxIdle" value="${redis.pool.maxIdle}" />
+		<property name="maxWaitMillis" value="${redis.pool.maxWaitMillis}" />
+		<property name="testOnBorrow" value="${redis.pool.testOnBorrow}" />
+	</bean>
+	
+	
+	<bean id="redisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+		destroy-method="destroy">
+		<property name="poolConfig" ref="jedisPoolConfig" />
+		<property name="hostName" value="${redis.host}" />
+		<property name="port" value="${redis.port}" />
+		<property name="password" value="${redis.pwd}" />
+		<property name="database" value="${redis.database}" />
+		<property name="timeout" value="${redis.timeout}" />
+		 <property name="usePool" value="true"/> 
+		<constructor-arg name="sentinelConfig" ref="redisSentinelConfiguration"/>
+	</bean>
+	<!--String模板  Key-Value序列化使用的是StringRedisSerializer 可读 -->
+	<bean id="redisStringTemplate" class="org.springframework.data.redis.core.StringRedisTemplate" >
+		<property name="connectionFactory" ref="redisConnectionFactory" />
+	</bean>
+	
+	<bean id="stringRedisSerializer" class="org.springframework.data.redis.serializer.StringRedisSerializer"></bean>
+	<bean id="jdkSerializationRedisSerializer" class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer"></bean>
+	
+	<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate" >
+		<property name="connectionFactory" ref ="redisConnectionFactory" />
+		<property name="keySerializer" ref ="stringRedisSerializer"></property>
+		<property name="valueSerializer" ref ="jdkSerializationRedisSerializer"></property>
+	</bean>
+</beans>
