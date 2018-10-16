@@ -8,28 +8,33 @@
       <version>1.0.0-SNAPSHOT</version>
   </parent>
   <artifactId>base.arch.tools.mail</artifactId>
-  <dependencies>
-	<!-- mail -->
-    <dependency>
+    <dependencies>
+        <!-- mail -->
+        <dependency>
         <groupId>javax.mail</groupId>
         <artifactId>mail</artifactId>
         <version>1.4.7</version>
-    </dependency>
-    <!-- 依赖包 -->
-    <dependency>
-		<groupId>commiao.base.parent</groupId>
-		<artifactId>base.arch.tools.utils</artifactId>
-	</dependency>
-    <dependency>
-		<groupId>commiao.base.parent</groupId>
-		<artifactId>base.arch.tools.config</artifactId>
-	</dependency>
-    
-    <!-- 单元测试 -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+        </dependency>
+        <!-- 依赖包 -->
+        <dependency>
+            <groupId>commiao.base.parent</groupId>
+            <artifactId>base.arch.tools.utils</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commiao.base.parent</groupId>
+            <artifactId>base.arch.tools.config</artifactId>
+        </dependency>
+
+        <!-- 单元测试 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>
