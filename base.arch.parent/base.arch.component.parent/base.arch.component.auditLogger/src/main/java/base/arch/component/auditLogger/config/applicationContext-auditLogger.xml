@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:amq="http://activemq.apache.org/schema/core" xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd
+           http://www.springframework.org/schema/mvc
+           http://www.springframework.org/schema/mvc/spring-mvc.xsd
+           http://www.springframework.org/schema/tx 
+           http://www.springframework.org/schema/tx/spring-tx.xsd 
+           http://www.springframework.org/schema/task
+		   http://www.springframework.org/schema/task/spring-task.xsd
+		   http://activemq.apache.org/schema/core
+      	   http://activemq.apache.org/schema/core/activemq-core.xsd
+      	   http://www.springframework.org/schema/data/mongo  
+		   http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
+
+	<aop:config>
+		<aop:pointcut id="redisCacheAdvicePoint" expression="execution(* com.hengtianjf..*.*(..)) and @annotation(auditLog)" />
+		<aop:aspect ref="auditLoggerAdvice" order="1">
+			<aop:around pointcut-ref="redisCacheAdvicePoint" method="logAround" />
+		</aop:aspect>
+	</aop:config>
+
+     <bean id="handleChainLinkedlist" class="java.util.LinkedList">
+        <constructor-arg>
+            <list>
+                <ref bean="auditLogRecordHandler" />
+            </list>
+        </constructor-arg>
+    </bean>
+
+    
+    <bean id="auditLoggerHandlerChain" class="base.arch.component.auditLogger.handler.AuditLoggerHandlerChain">
+        <property name="handlerList" ref="handleChainLinkedlist"/>
+    </bean>
+
+	<bean id="auditLogRecordHandler" class="com.hengtianjf.controller.common.log.AuditLogRecordHandlerImpl"></bean>
+
+
+
+	<bean id="auditLoggerManager" class="base.arch.component.auditLogger.manager.AuditLoggerManager">
+		<property name="auditLoggerHandlerChain" ref="auditLoggerHandlerChain" />
+	</bean>
+
+	<bean id="auditLoggerAdvice" class="base.arch.component.auditLogger.aop.AuditLoggerAdvice">
+		<property name="auditLoggerManager" ref="auditLoggerManager" />
+		<!-- <property name="auditHandleExecutor"></property>
+		<property name="auditLogInterceptor"></property> -->
+	</bean>
+
+
+</beans>

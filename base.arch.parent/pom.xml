@@ -16,9 +16,19 @@
         <module>base.arch.tools.parent</module>
     </modules>
 
-    <dependencies>
-
-
-    </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>commiao.base.parent</groupId>
+                <artifactId>base.arch.component.parent</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>commiao.base.parent</groupId>
+                <artifactId>base.arch.tools.parent</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>

@@ -14,5 +14,67 @@
 
     <modules>
         <module>base.arch.component.cache.parent</module>
+        <module>base.arch.component.activeMQ</module>
+        <module>base.arch.component.auditLogger</module>
+        <module>base.arch.component.cloudStorage</module>
+        <module>base.arch.component.excel</module>
+        <module>base.arch.component.exception</module>
+        <module>base.arch.component.http</module>
+        <module>base.arch.component.logger</module>
+        <module>base.arch.component.mongo</module>
+        <module>base.arch.component.mybatis</module>
+        <module>base.arch.component.spring</module>
+        <module>base.arch.component.spring.hession</module>
     </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>commiao.base.parent</groupId>
+                <artifactId>base.arch.component.exception</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>commiao.base.parent</groupId>
+                <artifactId>base.arch.component.excel</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>commiao.base.parent</groupId>
+                <artifactId>base.arch.component.logger</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>commiao.base.parent</groupId>
+                <artifactId>base.arch.component.mybatis</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>commiao.base.parent</groupId>
+                <artifactId>base.arch.component.cache.redis</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>commiao.base.parent</groupId>
+                <artifactId>base.arch.component.spring</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>commiao.base.parent</groupId>
+                <artifactId>base.arch.tools.encrypt</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>commiao.base.parent</groupId>
+                <artifactId>base.arch.component.auditLogger</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>commiao.base.parent</groupId>
+                <artifactId>base.arch.component.http</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 </project>

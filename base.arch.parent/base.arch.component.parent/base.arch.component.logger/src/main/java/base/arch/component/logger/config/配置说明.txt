@@ -1,0 +1,86 @@
+mongo.hostport=192.168.3.220
+mongo.port=27017
+mongo.connectionsPerHost=8
+mongo.threadsAllowedToBlockForConnectionMultiplier=4
+#\u8fde\u63a5\u8d85\u65f6\u65f6\u95f4
+mongo.connectTimeout=10000
+#\u7b49\u5f85\u65f6\u95f4
+mongo.maxWaitTime=15000
+mongo.autoConnectRetry=true
+mongo.socketKeepAlive=true
+#Socket\u8d85\u65f6\u65f6\u95f4
+mongo.socketTimeout=15000
+mongo.slaveOk=true
+
+
+
+
+	<bean id="defaultGroup" class="Group" >
+		<property name="name" value="defaultGroup"/>
+	</bean>
+	
+	<bean id="sl4jLoggerHandler"  class="Sl4jLoggerHandler"/>
+	
+	<bean  id="mongoDbHandler" class="basic.arch.component.handler.MongoDbHandler" >
+		<constructor-arg name="mongoTemplate" ref="mongoTemplate" />
+	</bean>
+	
+	<bean id="handleLinkedlist" class="java.util.LinkedList">
+		<constructor-arg>
+				<list>
+					<ref bean="sl4jLoggerHandler"/>
+					<ref bean="mongoDbHandler"/>
+				</list>		
+		</constructor-arg>
+	</bean>
+	
+	
+	<bean id="loggerChain" class="HTLoggerChain">
+		<constructor-arg name="map">
+			<map>
+				<entry  key="defaultGroup" value-ref="handleLinkedlist" />
+			</map>		
+		</constructor-arg>
+		<property name="defaultGroup" ref="defaultGroup" />
+	</bean>
+	
+	
+	<bean id="loggerManager" class="HTLoggerManager">
+		<constructor-arg name="times" value="2"/>
+		<constructor-arg name="asynFlag" value="true" />
+		<property name="loggerChain" ref="loggerChain" />
+	</bean>
+	
+	<bean id="HTLoggerFactory" class="HTLoggerFactory" >
+		<property name="loggerManager" ref="loggerManager"></property>
+	</bean>	
+  
+	
+	
+	
+	<!--  mongoDB-->
+    <mongo:mongo id="mongo" replica-set="${mongo.hostport}">
+        <mongo:options
+             connections-per-host="${mongo.connectionsPerHost}"
+             threads-allowed-to-block-for-connection-multiplier="${mongo.threadsAllowedToBlockForConnectionMultiplier}"
+             connect-timeout="${mongo.connectTimeout}"
+             max-wait-time="${mongo.maxWaitTime}"
+             auto-connect-retry="${mongo.autoConnectRetry}"
+             socket-keep-alive="${mongo.socketKeepAlive}"
+             socket-timeout="${mongo.socketTimeout}"
+             slave-ok="${mongo.slaveOk}"
+             write-number="1"
+             write-timeout="0"
+             write-fsync="true"/>        
+    </mongo:mongo>
+
+    <!-- mongo的工厂，通过它来取得mongo实例,dbname为mongodb的数据库名，没有的话会自动创建 -->
+    <mongo:db-factory dbname="log" mongo-ref="mongo"/>
+
+    <!-- mongodb的主要操作对象，所有对mongodb的增删改查的操作都是通过它完成 -->
+    <bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+        <constructor-arg ref="mongo" />
+        <constructor-arg name="databaseName" value="log" />
+    </bean>
+	
+	
