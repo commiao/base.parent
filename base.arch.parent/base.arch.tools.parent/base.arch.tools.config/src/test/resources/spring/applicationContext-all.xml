@@ -17,7 +17,7 @@
            http://www.springframework.org/schema/task
 		   http://www.springframework.org/schema/task/spring-task.xsd">
 
- 	<bean id="propertyConfigurer" class="basic.arch.tools.config.properties.PropertyConfigurer">
+ 	<bean id="propertyConfigurer" class="base.arch.tools.config.properties.PropertyConfigurer">
 		<property name="ignoreUnresolvablePlaceholders" value="true" />
 		<property name="locations">
 			<list>
@@ -32,7 +32,7 @@
 			</list>
 		</property>
 	</bean>
-	<bean id="mysqlConfigRead" class="basic.arch.tools.config.properties.MysqlConfigRead">
+	<bean id="mysqlConfigRead" class="base.arch.tools.config.properties.MysqlConfigRead">
 		
 		<!-- 排除的key，这些key自己加载 -->
 		<property name="excludeKeys">

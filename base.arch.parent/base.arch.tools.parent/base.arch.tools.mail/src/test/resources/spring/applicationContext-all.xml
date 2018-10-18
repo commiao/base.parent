@@ -26,7 +26,7 @@
 		</property>
 	</bean>
 
-	<!-- <bean id="propertyConfigurer" class="basic.arch.tools.config.properties.PropertyConfigurer">
+	<!-- <bean id="propertyConfigurer" claPropertyConfigurerurer">
 		<property name="ignoreUnresolvablePlaceholders" value="true" />
 		<property name="locations">
 			<list>
@@ -41,7 +41,7 @@
 			</list>
 		</property>
 	</bean>
-	<bean id="mysqlConfigRead" class="basic.arch.tools.config.properties.MysqlConfigRead">
+	<bean id="mysqlConfigRead" claMysqlConfigReadRead">
 		
 		排除的key，这些key自己加载
 		<property name="excludeKeys">

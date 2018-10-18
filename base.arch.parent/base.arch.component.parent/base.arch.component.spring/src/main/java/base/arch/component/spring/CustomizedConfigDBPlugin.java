@@ -15,7 +15,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import basic.arch.tools.encrypt.aes.AESUtils;
+import base.arch.tools.encrypt.aes.AESUtils;
 
 import com.alibaba.fastjson.JSON;
 
