@@ -8,8 +8,6 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <!-- 测试 -->
-
     <modules>
         <module>base.arch.parent</module>
     </modules>
