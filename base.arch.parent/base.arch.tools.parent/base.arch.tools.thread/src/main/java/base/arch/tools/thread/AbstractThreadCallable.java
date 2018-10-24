@@ -9,12 +9,14 @@ import java.util.concurrent.Callable;
  * @author:hehch
  * @version V1.0
  */
-public abstract class AbstractThreadTask<T> implements Callable<T> {
+public abstract class AbstractThreadCallable<T> implements Callable<T> {
 	
 	private long overTime;
 
-	public AbstractThreadTask() {
-		this.overTime = 30000 + System.currentTimeMillis();
+	private long threadTimeOut = 30000;
+
+	public AbstractThreadCallable() {
+		this.overTime = threadTimeOut + System.currentTimeMillis();
 	}
 
 	@Override
