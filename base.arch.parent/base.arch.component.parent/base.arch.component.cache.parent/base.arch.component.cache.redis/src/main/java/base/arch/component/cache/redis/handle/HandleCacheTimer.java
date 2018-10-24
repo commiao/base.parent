@@ -101,6 +101,20 @@ public class HandleCacheTimer {
         return result;
     }
 
+    public static Map<Object,Object> getHashMap(String key){
+        String time_key = getNewKeyCache(key, true);
+        // time_key 已处理TO前缀问题
+        Map<Object,Object> map = redisHashServiceStatic.get(time_key,false);
+        return map;
+    }
+
+    public static <V> V getHashBean(String key,String hashKey, Class<V> clazz){
+        String time_key = getNewKeyCache(key, true);
+        // time_key 已处理TO前缀问题
+        String result = redisHashServiceStatic.get(time_key,hashKey,false);
+        return JsonUtils.json2ObjStrong(result, clazz);
+    }
+
     public static boolean setHashCache(String key, Object hashKey, Object value, long timeOut, TimeUnit timeUnit){
         return redisHashServiceStatic.put(key, hashKey, value, timeOut,timeUnit);
     }

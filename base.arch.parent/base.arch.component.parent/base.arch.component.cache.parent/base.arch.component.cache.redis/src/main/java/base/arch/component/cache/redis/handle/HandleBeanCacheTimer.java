@@ -3,6 +3,7 @@ package base.arch.component.cache.redis.handle;
 import base.arch.component.cache.redis.constant.CacheConstant;
 import base.arch.component.cache.redis.service.RedisService;
 import base.arch.component.cache.redis.util.JsonUtils;
+import base.arch.component.cache.redis.util.ObjectTranscoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -204,6 +205,46 @@ public class HandleBeanCacheTimer {
             return false;
         }
         return true;
+    }
+
+    public static <V> Map<String,V> getMap(String key){
+        String new_key = getNewKeyCache(key, true);
+        String serializ = null;
+        Map<String, V> map = null;
+        // getNewKeyCache方法已处理TO:问题，所以传false
+        try {
+            serializ = redisServiceStatic.get(new_key, false);
+        } catch (Exception e) {
+            logger.debug("从缓存中查询key：{}-查询失败",new_key);
+            return map;
+        }
+        try {
+            map = (Map<String, V>) ObjectTranscoder.FromString(serializ);
+        } catch (Exception e) {
+//			redisCacheServiceStatic.deleteByPrex(key);
+            logger.debug("从缓存中查询key：{}-解析失败",new_key);
+        }
+        return map;
+    }
+
+    public static <V> boolean setMap(String key,Map<String,V> map,long timeOut,TimeUnit timeUnit){
+        StringBuffer logStr = new StringBuffer();
+        String time_key = getTimeKeyCache(key);
+        logStr.append("向缓存中【存储】时间戳对象：").append(time_key);
+        boolean bol = false;
+        try {
+            String ser = ObjectTranscoder.ToString(map);
+            bol = redisServiceStatic.put(time_key, ser, timeOut, timeUnit);
+        } catch (Exception e) {
+            logStr.append("信息【出现异常】");
+//			redisCacheServiceStatic.deleteByPrex(key);
+            logger.error(logStr.toString(), e);
+            bol = false;
+        }
+        if(bol){
+            getNewKeyCache(key,true);
+        }
+        return bol;
     }
 
     public static void main(String[] args) {

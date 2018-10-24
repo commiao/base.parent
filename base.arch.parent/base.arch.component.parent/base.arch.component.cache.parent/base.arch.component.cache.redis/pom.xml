@@ -52,6 +52,13 @@
             <artifactId>commons-lang3</artifactId>
         </dependency>
 
+        <!-- 序列化 https://mvnrepository.com/artifact/com.esotericsoftware.kryo/kryo -->
+        <dependency>
+            <groupId>com.esotericsoftware.kryo</groupId>
+            <artifactId>kryo</artifactId>
+            <version>2.16</version>
+        </dependency>
+
         <!-- 单元测试 -->
         <dependency>
             <groupId>org.springframework</groupId>
