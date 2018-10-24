@@ -39,8 +39,6 @@ public class ThreadTaskPoolTest {
     /**
      * 执行任务1，实现Callable方式
      *
-     * @author SHANHY(365384722@QQ.COM)
-     * @date   2015年12月4日
      */
     static class ExcuteTask1 extends AbstractThreadCallable<String> {
         private String taskName;
@@ -58,7 +56,7 @@ public class ThreadTaskPoolTest {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            System.out.println("-------------这里执行业务逻辑，Callable TaskName = " + taskName + "-------------");
+            System.out.println("-------------执行线程为："+Thread.currentThread().getName()+"，Callable TaskName = "+taskName + "-------------");
             return ">>>>>>>>>>>>>线程返回值，Callable TaskName = " + taskName + "<<<<<<<<<<<<<<";
         }
     }
@@ -66,8 +64,6 @@ public class ThreadTaskPoolTest {
     /**
      * 执行任务2，实现Runable方式
      *
-     * @author SHANHY(365384722@QQ.COM)
-     * @date   2015年12月4日
      */
     static class ExcuteTask2 extends AbstractThreadRunnable {
         private String taskName;
@@ -83,7 +79,7 @@ public class ThreadTaskPoolTest {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            System.out.println("-------------这里执行业务逻辑，Runnable TaskName = " + taskName + "-------------");
+            System.out.println("-------------执行线程为："+Thread.currentThread().getName()+"，Runnable TaskName = "+taskName + "-------------");
         }
 
     }
