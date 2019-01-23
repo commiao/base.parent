@@ -32,4 +32,19 @@ public interface RedisHashService {
     String get(String key, Object hashKey, boolean isTimeOutKey);
 
     Map<Object,Object> get(String key, boolean isTimeOutKey);
+
+    /**
+     * 将key添加后缀时间戳
+     * @param key
+     * @return
+     */
+    String getTimeKeyCache(String key);
+
+    /**
+     * 根据后缀查找最新的key，并将旧key设置失效时间
+     * @param prex 去除时间戳"-yyyyMMddHHmmss"之后的key
+     * @param isDel 是否将旧的key设置缓存失效时间 默认1分钟后失效
+     * @return
+     */
+    String getNewKeyCache(String prex, boolean isDel);
 }

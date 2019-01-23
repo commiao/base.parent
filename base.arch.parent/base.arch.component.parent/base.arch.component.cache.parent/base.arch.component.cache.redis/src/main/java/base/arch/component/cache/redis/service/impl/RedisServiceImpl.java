@@ -64,25 +64,4 @@ public class RedisServiceImpl extends RedisTempl<String,String> implements Redis
         return redisTemplate.keys(pattern);
     }
 
-    /**
-     * 指定缓存失效时间
-     * @author jingmiao
-     * @param key 键
-     * @param time 时间(秒)
-     * @param timeUnit 时间单位
-     * @return
-     */
-    @Override
-    public boolean expire(String key,long time,TimeUnit timeUnit){
-        try {
-            if(time>0){
-                redisTemplate.expire(key, time, timeUnit);
-            }
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
 }

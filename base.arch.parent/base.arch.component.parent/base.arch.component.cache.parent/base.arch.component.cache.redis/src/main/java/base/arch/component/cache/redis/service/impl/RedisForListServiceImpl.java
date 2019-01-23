@@ -153,5 +153,5 @@ public class RedisForListServiceImpl extends RedisTempl<String,String> implement
     public Set<String> keys(String pattern){
     	return redisTemplate.keys(pattern);
     }
-    
+
 }
