@@ -13,6 +13,11 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>commiao.base.parent</groupId>
+            <artifactId>base.arch.tools.utils</artifactId>
+        </dependency>
+
         <!-- Redis -->
         <dependency>
             <groupId>redis.clients</groupId>

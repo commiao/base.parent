@@ -32,47 +32,52 @@
             <dependency>
                 <groupId>commiao.base.parent</groupId>
                 <artifactId>base.arch.component.exception</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${base.arch.component.verision}</version>
             </dependency>
             <dependency>
                 <groupId>commiao.base.parent</groupId>
                 <artifactId>base.arch.component.excel</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${base.arch.component.verision}</version>
             </dependency>
             <dependency>
                 <groupId>commiao.base.parent</groupId>
                 <artifactId>base.arch.component.logger</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${base.arch.component.verision}</version>
             </dependency>
             <dependency>
                 <groupId>commiao.base.parent</groupId>
                 <artifactId>base.arch.component.mybatis</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${base.arch.component.verision}</version>
             </dependency>
             <dependency>
                 <groupId>commiao.base.parent</groupId>
                 <artifactId>base.arch.component.cache.redis</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${base.arch.component.verision}</version>
             </dependency>
             <dependency>
                 <groupId>commiao.base.parent</groupId>
                 <artifactId>base.arch.component.spring</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
-            </dependency>
-            <dependency>
-                <groupId>commiao.base.parent</groupId>
-                <artifactId>base.arch.tools.encrypt</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${base.arch.component.verision}</version>
             </dependency>
             <dependency>
                 <groupId>commiao.base.parent</groupId>
                 <artifactId>base.arch.component.auditLogger</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${base.arch.component.verision}</version>
             </dependency>
             <dependency>
                 <groupId>commiao.base.parent</groupId>
                 <artifactId>base.arch.component.http</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${base.arch.component.verision}</version>
+            </dependency>
+            <dependency>
+                <groupId>commiao.base.parent</groupId>
+                <artifactId>base.arch.tools.encrypt</artifactId>
+                <version>${base.arch.tools.verision}</version>
+            </dependency>
+            <dependency>
+                <groupId>commiao.base.parent</groupId>
+                <artifactId>base.arch.tools.utils</artifactId>
+                <version>${base.arch.tools.verision}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
