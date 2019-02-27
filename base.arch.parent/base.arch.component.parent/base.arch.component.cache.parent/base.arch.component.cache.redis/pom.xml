@@ -22,12 +22,10 @@
         <dependency>
             <groupId>redis.clients</groupId>
             <artifactId>jedis</artifactId>
-            <version>2.6.2</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-redis</artifactId>
-            <version>1.7.1.RELEASE</version>
         </dependency>
 
         <dependency>
@@ -39,26 +37,22 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.54</version>
         </dependency>
 
         <dependency>
             <groupId>net.sf.json-lib</groupId>
             <artifactId>json-lib</artifactId>
-            <version>2.4</version>
         </dependency>
 
         <dependency>
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
-            <version>20160810</version>
         </dependency>
 
         <!-- pageList -->
         <dependency>
             <groupId>com.github.miemiedev</groupId>
             <artifactId>mybatis-paginator</artifactId>
-            <version>1.2.10</version>
         </dependency>
 
         <dependency>
@@ -70,7 +64,6 @@
         <dependency>
             <groupId>com.esotericsoftware.kryo</groupId>
             <artifactId>kryo</artifactId>
-            <version>2.16</version>
         </dependency>
 
         <!-- 单元测试 -->
