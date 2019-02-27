@@ -260,6 +260,18 @@
                 <version>4.1</version>
             </dependency>
 
+            <!-- activeMQ -->
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-all</artifactId>
+                <version>5.15.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.activemq</groupId>
+                <artifactId>activemq-pool</artifactId>
+                <version>5.9.0</version>
+            </dependency>
+
             <!-- 切面 -->
             <!-- aspectjtools.jar包主要是提供赫赫有名的 ajc编译器
             ，可以在编译期将将java文件或者class文件或者aspect文件定义的切面织入到业务代码中。
