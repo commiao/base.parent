@@ -277,6 +277,13 @@
                 <version>2.0</version>
             </dependency>
 
+            <!-- mail -->
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>mail</artifactId>
+                <version>1.4.7</version>
+            </dependency>
+
             <!-- 性能测试 -->
             <dependency>
                 <groupId>org.databene</groupId>
