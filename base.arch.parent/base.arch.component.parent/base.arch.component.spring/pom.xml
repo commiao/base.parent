@@ -55,6 +55,10 @@
 			<artifactId>spring-context</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+		</dependency>
+		<dependency>
 		<groupId>commiao.base.parent</groupId>
 		<artifactId>base.arch.tools.encrypt</artifactId>
 	</dependency>
