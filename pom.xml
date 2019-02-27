@@ -305,6 +305,13 @@
                 <version>2.3.16</version>
             </dependency>
 
+            <!-- hessian -->
+            <dependency>
+                <groupId>com.caucho</groupId>
+                <artifactId>hessian</artifactId>
+                <version>4.0.38</version>
+            </dependency>
+
             <!-- 性能测试 -->
             <dependency>
                 <groupId>org.databene</groupId>
