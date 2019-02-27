@@ -96,7 +96,7 @@ public class HandleListCacheTimer {
             logger.info("setListCache更新缓存，期望更新listBean不为空，实际传入空，返回false");
             return false;
         }
-       return setListCacheBase(key, JsonUtils.list2Json(listBean),time,timeUnit,isDel);
+       return setListCacheBase(key,JsonUtils.list2Json(listBean),time,timeUnit,isDel);
     }
 
     /**

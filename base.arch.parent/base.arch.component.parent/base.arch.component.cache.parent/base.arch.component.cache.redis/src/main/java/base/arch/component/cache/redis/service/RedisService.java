@@ -19,7 +19,7 @@ public interface RedisService {
 
     Set<String> keys(String pattern);
 
-    boolean expire(String key, long time, TimeUnit timeUnit);
+    boolean expire(String key,long time,TimeUnit timeUnit);
 
     /**
      * 将key添加后缀时间戳
@@ -34,5 +34,5 @@ public interface RedisService {
      * @param isDel 是否将旧的key设置缓存失效时间 默认1分钟后失效
      * @return
      */
-    String getNewKeyCache(String prex, boolean isDel);
+    String getNewKeyCache(String prex, boolean isDel );
 }
