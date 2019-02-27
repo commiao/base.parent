@@ -13,7 +13,6 @@
 		<dependency>
 			<groupId>org.aeonbits.owner</groupId>
 			<artifactId>owner</artifactId>
-			<version>1.0.9</version>
 		</dependency>
 		<!-- 从数据库加载配置文件 -->
 		<dependency>
