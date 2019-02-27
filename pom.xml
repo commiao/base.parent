@@ -144,23 +144,6 @@
                 <version>20160810</version>
             </dependency>
 
-            <!-- httpcomponents -->
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpclient</artifactId>
-                <version>4.4.1</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpmime</artifactId><!-- 上传功能需要httpmime -->
-                <version>4.4.1</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.httpcomponents</groupId>
-                <artifactId>httpasyncclient</artifactId>
-                <version>4.1</version>
-            </dependency>
-
             <!-- 2、业务层与数据层的jar包 -->
             <!-- Spring配置 -->
             <dependency>
@@ -240,6 +223,43 @@
                 <version>4.1.6.RELEASE</version>
             </dependency>
 
+            <!-- 3、apache的jar包 -->
+            <!-- poi -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>3.14</version>
+            </dependency>
+
+            <!-- velocity -->
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity</artifactId>
+                <version>1.7</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.velocity</groupId>
+                <artifactId>velocity-tools</artifactId>
+                <version>2.0</version>
+            </dependency>
+
+            <!-- httpcomponents -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.4.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpmime</artifactId><!-- 上传功能需要httpmime -->
+                <version>4.4.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpasyncclient</artifactId>
+                <version>4.1</version>
+            </dependency>
+
             <!-- 切面 -->
             <!-- aspectjtools.jar包主要是提供赫赫有名的 ajc编译器
             ，可以在编译期将将java文件或者class文件或者aspect文件定义的切面织入到业务代码中。
@@ -290,18 +310,6 @@
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>18.0</version>
-            </dependency>
-
-            <!-- velocity -->
-            <dependency>
-                <groupId>org.apache.velocity</groupId>
-                <artifactId>velocity</artifactId>
-                <version>1.7</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.velocity</groupId>
-                <artifactId>velocity-tools</artifactId>
-                <version>2.0</version>
             </dependency>
 
             <!-- mail -->
