@@ -144,6 +144,23 @@
                 <version>20160810</version>
             </dependency>
 
+            <!-- httpcomponents -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.4.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpmime</artifactId><!-- 上传功能需要httpmime -->
+                <version>4.4.1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpasyncclient</artifactId>
+                <version>4.1</version>
+            </dependency>
+
             <!-- 2、业务层与数据层的jar包 -->
             <!-- Spring配置 -->
             <dependency>
