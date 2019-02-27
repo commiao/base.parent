@@ -25,27 +25,27 @@
             <dependency>
                 <groupId>commiao.base.parent</groupId>
                 <artifactId>base.arch.tools.codegenerator</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${base.arch.tools.verision}</version>
             </dependency>
             <dependency>
                 <groupId>commiao.base.parent</groupId>
                 <artifactId>base.arch.tools.encrypt</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${base.arch.tools.verision}</version>
             </dependency>
             <dependency>
                 <groupId>commiao.base.parent</groupId>
                 <artifactId>base.arch.tools.utils</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${base.arch.tools.verision}</version>
             </dependency>
             <dependency>
                 <groupId>commiao.base.parent</groupId>
                 <artifactId>base.arch.tools.config</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${base.arch.tools.verision}</version>
             </dependency>
             <dependency>
                 <groupId>commiao.base.parent</groupId>
                 <artifactId>base.arch.tools.mail</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>${base.arch.tools.verision}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

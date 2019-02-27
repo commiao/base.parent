@@ -5,32 +5,44 @@
 
 package base.arch.component.cache.redis.service.impl;
 
-import base.arch.component.cache.redis.annotation.HashExcludeColumn;
-import base.arch.component.cache.redis.config.IKeyConfig;
-import base.arch.component.cache.redis.config.RedisKeyConfigImpl;
-import base.arch.component.cache.redis.contextholder.RedisSpringApplicationContextHolder2;
-import base.arch.component.cache.redis.exception.CacheException;
-import base.arch.component.cache.redis.service.RedisForStringService;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Modifier;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+
+import javax.annotation.Resource;
+
 import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.dao.DataAccessException;
-import org.springframework.data.redis.core.*;
+import org.springframework.data.redis.core.BoundHashOperations;
+import org.springframework.data.redis.core.BoundListOperations;
+import org.springframework.data.redis.core.BoundValueOperations;
+import org.springframework.data.redis.core.RedisOperations;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.SessionCallback;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.util.ReflectionUtils.FieldCallback;
 import org.springframework.util.ReflectionUtils.FieldFilter;
 import org.springframework.util.StringUtils;
 
-import javax.annotation.Resource;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Modifier;
-import java.util.*;
-import java.util.concurrent.TimeUnit;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
+
+import base.arch.component.cache.redis.annotation.HashExcludeColumn;
+import base.arch.component.cache.redis.config.IKeyConfig;
+import base.arch.component.cache.redis.config.RedisKeyConfigImpl;
+import base.arch.component.cache.redis.contextholder.RedisSpringApplicationContextHolder2;
+import base.arch.component.cache.redis.exception.CacheException;
+import base.arch.component.cache.redis.service.RedisForStringService;
 
 @Service
 public class RedisForStringServiceImpl implements RedisForStringService {
@@ -346,7 +358,7 @@ public class RedisForStringServiceImpl implements RedisForStringService {
 
     public IKeyConfig getRedisKeyConfig() {
         if(this.redisKeyConfig == null) {
-            RedisKeyConfigImpl redisKeyConfigImpl = (RedisKeyConfigImpl) RedisSpringApplicationContextHolder2.getBean("redisKeyConfig", RedisKeyConfigImpl.class);
+            RedisKeyConfigImpl redisKeyConfigImpl = (RedisKeyConfigImpl)RedisSpringApplicationContextHolder2.getBean("redisKeyConfig", RedisKeyConfigImpl.class);
             if(redisKeyConfigImpl == null) {
                 throw new NoSuchBeanDefinitionException(RedisKeyConfigImpl.class, "RedisKeyConfigImpl没有初始化，请查看是否纳入spring管理");
             }

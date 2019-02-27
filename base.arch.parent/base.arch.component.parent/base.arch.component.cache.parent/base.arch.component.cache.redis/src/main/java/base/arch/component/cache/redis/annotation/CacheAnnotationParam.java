@@ -1,5 +1,6 @@
 package base.arch.component.cache.redis.annotation;
 
+import java.lang.reflect.Type;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 

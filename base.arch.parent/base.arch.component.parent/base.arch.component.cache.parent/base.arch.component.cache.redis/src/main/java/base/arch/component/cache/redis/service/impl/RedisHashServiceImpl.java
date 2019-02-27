@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
  * @version: V1.0
  */
 @Service
-public class RedisHashServiceImpl extends RedisTempl<String,String> implements RedisHashService {
+public class RedisHashServiceImpl extends RedisTempl<String,String> implements RedisHashService{
 
     @Override
     public boolean put(final String key, final Object hashKey, final Object value, boolean isTimeOutKey){

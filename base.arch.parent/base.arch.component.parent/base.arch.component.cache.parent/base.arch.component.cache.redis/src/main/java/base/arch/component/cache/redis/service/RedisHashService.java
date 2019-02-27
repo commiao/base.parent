@@ -46,5 +46,5 @@ public interface RedisHashService {
      * @param isDel 是否将旧的key设置缓存失效时间 默认1分钟后失效
      * @return
      */
-    String getNewKeyCache(String prex, boolean isDel);
+    String getNewKeyCache(String prex, boolean isDel );
 }

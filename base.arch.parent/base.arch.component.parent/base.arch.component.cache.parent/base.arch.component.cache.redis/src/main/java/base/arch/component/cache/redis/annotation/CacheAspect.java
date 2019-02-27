@@ -193,15 +193,15 @@ public class CacheAspect {
         Boolean saveStatus = false;
         String key = StringUtils.isBlank(prexKey)?param.getKey():prexKey+param.getKey();
         logger.info("使用缓存查询bean:{}-{}接口-参数：key:{}-start",description,msig.getName(),key);
-        result = param.isUseCache()? HandleBeanCacheTimer.getObjectCache(key, currentMethod.getReturnType()):null;
+        result = param.isUseCache()?HandleBeanCacheTimer.getObjectCache(key, currentMethod.getReturnType()):null;
         if(result==null){
             result = joinPoint.proceed();
             if(result!=null) {
                 saveStatus = HandleBeanCacheTimer.setObjectCache(key, result, param.getDateFormat(), timeOut, timeUnit);
             }
-            logger.debug("使用缓存查询bean:{}-{}接口-实时查询返回数据:{}",description,msig.getName(), JsonUtils.bean2Json(result));
+            logger.debug("使用缓存查询bean:{}-{}接口-实时查询返回数据:{}",description,msig.getName(),JsonUtils.bean2Json(result));
         }else{
-            logger.debug("使用缓存查询bean:{}-{}接口-redis查询返回数据:{}",description,msig.getName(), JsonUtils.bean2Json(result));
+            logger.debug("使用缓存查询bean:{}-{}接口-redis查询返回数据:{}",description,msig.getName(),JsonUtils.bean2Json(result));
         }
         logger.info("使用缓存查询bean:{}-{}接口-更新缓存状态saveStatus:{}-end",description,msig.getName(),saveStatus);
         return result;
